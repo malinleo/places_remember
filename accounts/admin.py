@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import User, Memory
+from accounts.models import User
+from places_remember_app.models import Memory
 
 # Register your models here.
 
