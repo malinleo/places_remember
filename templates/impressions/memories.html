@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+{% block header %}
+    {% include 'include/header.html' %}
+{% endblock header %}
 {% block body %}
     {% include 'include/header.html' %}
-
+    {% include 'include/sidebar_memories.html' %}
 {% endblock %}
