@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from places_remember_app.models import Memory
 from social_django.models import UserSocialAuth
+
+
 # Create your views here.
 
 
@@ -16,6 +18,7 @@ def memories(request):
     context = {
         'user': request.user,
         'memories': memories,
-        'picture_url': user_social_auth.extra_data['picture']['data']['url'],
+        'picture_url': user_social_auth.extra_data['picture']['data']['url'] if user_social_auth.provider == 'facebook'
+        else user_social_auth.extra_data['photo_big']
     }
     return render(request, 'impressions/memories.html', context)
