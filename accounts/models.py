@@ -6,14 +6,14 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     """User Model"""
-    username = models.CharField('Имя пользователя', max_length=50, unique=True)
-    password = models.CharField('Пароль', max_length=100)
+    username = models.CharField('Username', max_length=50, unique=True)
+    password = models.CharField('Password', max_length=100)
     email = models.EmailField('E-mail')
-    first_name = models.CharField('Имя', max_length=150)
-    last_name = models.CharField('Фамилия', max_length=150)
-    user_image = models.ImageField('Изображение', upload_to='user_photos/', blank=True)
-    date_joined = models.DateField('Дата регистрации', auto_now_add=True)
-    last_login = models.DateTimeField('Заходил последний раз', auto_now_add=True, null=True)
+    first_name = models.CharField('First name', max_length=150)
+    last_name = models.CharField('Last name', max_length=150)
+    user_image = models.ImageField('User image', upload_to='user_photos/', blank=True)
+    date_joined = models.DateField('Date joined', auto_now_add=True)
+    last_login = models.DateTimeField('Last online', auto_now_add=True, null=True)
     # user_url = models.SlugField('URL пользователя', max_length=160, unique=True)
 
     def __str__(self):

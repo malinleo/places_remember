@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <title>Homepage</title>
     <!-- MDB icon -->
-    <link rel="icon" href="{% static 'img/mdb-favicon.ico' %}" type="image/x-icon"/>
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css' %}"/>
     <!-- Google Fonts Roboto -->
@@ -22,14 +22,12 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}"/>
 </head>
 <body>
-<header>
-    {% block header %}
-        {% include 'include/header.html' %}
-    {% endblock header %}
-</header>
+{% block header %}
+{% endblock header %}
 {% block body %}
 {% endblock body %}
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap.bundle.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>

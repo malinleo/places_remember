@@ -3,6 +3,37 @@
     {% include 'include/header.html' %}
 {% endblock header %}
 {% block body %}
-    {% include 'include/header.html' %}
-    {% include 'include/sidebar_memories.html' %}
+    <div class="container mt-5">
+        <div class="row">
+            {% for memory in memories %}
+                <div class="col-md-6">
+                    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <h6 class="mb-0">
+                                <span class="text-dark">{{ memory.title }}</span>
+                            </h6>
+                            <div class="mb-1 text-muted small">Nov 12</div>
+                            <p class="card-text mb-auto">{{ memory.description }}</p>
+                            <a class="btn btn-outline-secondary btn-sm" role="button"
+                               href="http://www.jquery2dotnet.com/">Change</a>
+                        </div>
+                        <img class="card-img-right flex-auto d-none d-lg-block" alt="Memory image"
+                             src="{{ memory.image.url }}" style="width: 200px; height: 250px;">
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="col-md-6">
+                <a class="card-link" href="">
+                    <div class="card flex-md-row mb-4 shadow-sm h-md-250" style="height: 250px">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-dark bg-light">
+                            <i class="fa fa-plus fa-4x"></i>
+                            <h4 class="mb-0">
+                                <span>Add memory</span>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

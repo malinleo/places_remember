@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top scrolling-navbar">
     <div class="container">
         <a href="{% url 'main' %}" class="navbar-brand">Places Remember</a>
         <button
@@ -16,7 +16,8 @@
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0 smooth-scroll">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'impressions' %}" class="nav-link" aria-current="page">Your Impressions</a>
+                        <a href="{% url 'impressions' %}" class="nav-link" aria-current="page">Your
+                            Impressions</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" aria-current="page">
@@ -26,7 +27,14 @@
                     </li>
                 {% endif %}
             </ul>
-            <ul class="navbar-nav justify-content-end">
+            {% if user.is_authenticated %}
+                <div class="navbar-nav d-flex ml-auto justify-content-end smooth-scroll">
+                    <img src="{{ picture_url }}" alt="User photo" width="30" height="30"
+                         class="mr-2 mt-1 rounded-circle">
+                    <span class="navbar-text text-gray">{{ user.first_name }} {{ user.last_name }}</span>
+                </div>
+            {% endif %}
+            <ul class="navbar-nav ml-5 justify-content-end smooth-scroll">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'logout' %}" class="nav-link" aria-current="page">Logout</a>

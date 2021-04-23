@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
+    # External apps
     'social_django',
+    'django_google_maps',
+    'location_field.apps.DefaultConfig',
+    # My apps
+    'accounts',
     'places_remember_app',
 ]
 
@@ -67,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # External context processors
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
@@ -92,9 +97,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    # External auth backends
     'social_core.backends.vk.VKOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -148,7 +154,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GOOGLE_MAPS_API_KEY = 'AIzaSyBXk5RxvPRvdog6QLtkkjmI9FLufbl5Y_0'
+# External apps settings
+# --------------------------------------------------------------
+
+# Google maps Django
+
+# GOOGLE_MAPS_API_KEY = 'AIzaSyBhCareWpwxh0pmaG9sQ7kpLKO8olSNE90'
+LOCATION_FIELD = {
+    'map.provider': 'openstreetmap'
+    # 'map.provider': 'mapbox',
+    # 'provider.mapbox.access_token': 'pk.eyJ1IjoibWFsaW5sZW8iLCJhIjoiY2tudTl0czNyMGF3MjJ2cXEzcXhycml5YyJ9.L11DhO3Gtw4qsKgRo2g8VA',
+    # 'provider.mapbox.max_zoom': 18,
+    # 'provider.mapbox.id': 'mapbox.streets',
+}
+
+# FB auth
 
 SOCIAL_AUTH_FACEBOOK_KEY = '355560659226234'
 SOCIAL_AUTH_FACEBOOK_SECRET = '0f9723feb6f7f0db9df656e86687744c'
@@ -162,6 +182,8 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('picture', 'picture'),
     ('link', 'profile_url'),
 ]
+
+# VK auth
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7827636'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'XduG7gllMzHzIJKBkZ7T'
