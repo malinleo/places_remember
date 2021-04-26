@@ -14,7 +14,6 @@ class User(AbstractUser):
     user_image = models.ImageField('User image', upload_to='user_photos/', blank=True)
     date_joined = models.DateField('Date joined', auto_now_add=True)
     last_login = models.DateTimeField('Last online', auto_now_add=True, null=True)
-    # user_url = models.SlugField('URL пользователя', max_length=160, unique=True)
 
     def __str__(self):
         return '%s, %s' % (self.username, self.first_name)

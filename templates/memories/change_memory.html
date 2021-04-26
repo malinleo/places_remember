@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block form-media %} {{ form.media }} {% endblock form-media %}
+{% block header %}
+    {% include 'include/header.html' %}
+{% endblock header %}
+{% block body %}
+    <div class="container pb-4 d-block w-100">
+        <form action="{% url 'change_memory' pk=memory_id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group row justify-content-center">
+                {% for field in form %}
+                    <div class="col-8">
+                        {{ field.errors }}<br>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="form-group row justify-content-center">
+                <div class="col-8">
+                    <input class="btn btn-dark btn-send pt-2 btn-block" type="submit" value="Save memory">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock body %}

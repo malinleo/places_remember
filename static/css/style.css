@@ -64,6 +64,14 @@ body {
     color: #7579e7 !important;
 }
 
+.btn-send {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    width: 80%;
+    margin-left: 3px;
+}
+
 .social-card-header{
     position: relative;
     display: -ms-flexbox;

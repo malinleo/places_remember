@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'impressions'
+LOGIN_REDIRECT_URL = 'memories'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'main'
 
