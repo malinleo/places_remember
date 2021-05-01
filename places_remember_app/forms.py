@@ -14,5 +14,5 @@ class MemoryForm(forms.ModelForm):
         fields = ['title', 'description', 'date', 'address', 'location', 'image']
         widgets = {
             'date': forms.SelectDateWidget(years=range(date.today().year - 50, date.today().year),
-                                               attrs={'class': 'form-control'}),
+                                           attrs={'class': 'form-control'}),
         }

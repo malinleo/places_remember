@@ -13,9 +13,9 @@ class Memory(models.Model):
     title = models.CharField('Title', max_length=100)
     description = models.TextField('Description', max_length=5000)
     date = models.DateField('Date', default=date.today)
-    address = models.CharField(max_length=255)
+    address = models.CharField('Address', max_length=255)
     location = PlainLocationField(based_fields=['address'], zoom=7, default='')
-    image = models.ImageField('Image', upload_to='memory_photos/', blank=True, null=True, default='default.jpg')
+    image = models.ImageField('Image', upload_to='memory_photos/', blank=True, default='default.jpg')
 
     def __str__(self):
         return self.title

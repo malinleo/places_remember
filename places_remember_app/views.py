@@ -65,15 +65,12 @@ def change_memory(request, pk):
     if request.method == 'POST':
         memory_form = MemoryForm(request.POST, request.FILES)
         if memory_form.is_valid():
-            print(memory_form.cleaned_data)
             for key, value in memory_form.cleaned_data.items():
                 setattr(memory, key, value)
             memory.save()
         return redirect('memories')
     else:
         user_social_auth = UserSocialAuth.objects.get(user_id=request.user.pk)
-        # memory_form_initial = {field.__str__().split('.')[-1]: field.value_from_object(memory)
-        #                        for field in memory._meta.fields}
         memory_form = MemoryForm(instance=memory)
         context = {
             'memory_id': memory.pk,
@@ -88,4 +85,3 @@ def delete_memory(request, pk):
     if request.method == 'POST':
         Memory.objects.get(pk=pk).delete()
     return redirect('memories')
-

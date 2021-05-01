@@ -16,7 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,8 +25,7 @@ SECRET_KEY = 'django-insecure-v2eo)&6vip+93qi01!+27ec&z_z98#pb45_stp$z#@o0hmua))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -62,8 +60,7 @@ ROOT_URLCONF = 'places_remember.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'places_remember.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -91,7 +87,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -124,7 +119,6 @@ LOGIN_REDIRECT_URL = 'memories'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'main'
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -137,7 +131,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -174,7 +167,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = '355560659226234'
 SOCIAL_AUTH_FACEBOOK_SECRET = '0f9723feb6f7f0db9df656e86687744c'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-  'fields': 'id, name, email, picture.type(large), link'
+    'fields': 'id, name, email, picture.type(large), link'
 }
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('name', 'name'),
@@ -189,4 +182,3 @@ SOCIAL_AUTH_VK_OAUTH2_KEY = '7827636'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'XduG7gllMzHzIJKBkZ7T'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', ]
 SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = ['screen_name', 'photo_big']
-
