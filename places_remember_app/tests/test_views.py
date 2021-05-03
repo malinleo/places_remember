@@ -88,7 +88,7 @@ class AddMemoryTest(TestCase):
 
     def test_add_memory_is_correct(self):
         self.client.login(username='username', password='PassWord12345.')
-        img = BytesIO(open('media/default.jpg', 'rb').read())
+        img = BytesIO(open('test-images/default.jpg', 'rb').read())
         img.name = 'default.jpg'
         resp = self.client.post(reverse('add_memory'), {'title': 'title',
                                                         'description': 'description',
@@ -130,7 +130,7 @@ class ChangeMemoryViewTest(TestCase):
 
     def test_change_memory_is_correct(self):
         self.client.login(username='username', password='PassWord12345.')
-        img = BytesIO(open('media/memory_photos/2.jpg', 'rb').read())
+        img = BytesIO(open('test-images/2.jpg', 'rb').read())
         img.name = '2.jpg'
         cleaned_data = {'title': 'title changed',
                         'description': 'description changed',
