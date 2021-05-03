@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
 from datetime import date
-from io import BytesIO
 from accounts.models import User
 from ..models import Memory
 from social_django.models import UserSocialAuth
