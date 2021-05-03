@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'social_django',
     'django_google_maps',
     'location_field.apps.DefaultConfig',
+    'coveralls',
     # My apps
     'accounts',
     'places_remember_app',
