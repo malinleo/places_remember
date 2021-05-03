@@ -88,14 +88,11 @@ class AddMemoryTest(TestCase):
 
     def test_add_memory_is_correct(self):
         self.client.login(username='username', password='PassWord12345.')
-        img = BytesIO(open('test-images/default.jpg', 'rb').read())
-        img.name = 'default.jpg'
         resp = self.client.post(reverse('add_memory'), {'title': 'title',
                                                         'description': 'description',
                                                         'date': date.today(),
                                                         'address': 'address',
-                                                        'location': '56.00637898153531,92.86683082580566',
-                                                        'image': img})
+                                                        'location': '56.00637898153531,92.86683082580566'})
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('memories'))
 
@@ -130,14 +127,11 @@ class ChangeMemoryViewTest(TestCase):
 
     def test_change_memory_is_correct(self):
         self.client.login(username='username', password='PassWord12345.')
-        img = BytesIO(open('test-images/2.jpg', 'rb').read())
-        img.name = '2.jpg'
         cleaned_data = {'title': 'title changed',
                         'description': 'description changed',
                         'date': date.today(),
                         'address': 'address changed',
-                        'location': '56.00637898153531,92.86683082580566',
-                        'image': img}
+                        'location': '56.00637898153531,92.86683082580566'}
         resp = self.client.post(reverse('change_memory', kwargs={'pk': 1}), cleaned_data)
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('memories'))
@@ -147,8 +141,6 @@ class ChangeMemoryViewTest(TestCase):
             key = field.__str__().split('.')[-1]
             if key in cleaned_data.keys():
                 memory_cleaned_data[key] = field.value_from_object(memory)
-        memory_cleaned_data.pop('image')
-        cleaned_data.pop('image')
         self.assertDictEqual(memory_cleaned_data, cleaned_data)
 
 
