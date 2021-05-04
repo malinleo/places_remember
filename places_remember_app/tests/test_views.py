@@ -95,6 +95,19 @@ class AddMemoryTest(TestCase):
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('memories'))
 
+    def test_add_memory_right_context(self):
+        self.client.login(username='username', password='PassWord12345.')
+        resp = self.client.get(reverse('add_memory'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertTrue('form' in resp.context)
+        self.assertTrue('picture_url' in resp.context)
+
+    def test_add_memory_uses_correct_template(self):
+        self.client.login(username='username', password='PassWord12345.')
+        resp = self.client.get(reverse('add_memory'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'memories/add_memory.html')
+
 
 class ChangeMemoryViewTest(TestCase):
 
@@ -141,6 +154,20 @@ class ChangeMemoryViewTest(TestCase):
             if key in cleaned_data.keys():
                 memory_cleaned_data[key] = field.value_from_object(memory)
         self.assertDictEqual(memory_cleaned_data, cleaned_data)
+
+    def test_change_memory_right_context(self):
+        self.client.login(username='username', password='PassWord12345.')
+        resp = self.client.get(reverse('change_memory', kwargs={'pk': 1}))
+        self.assertEqual(resp.status_code, 200)
+        self.assertTrue('memory_id' in resp.context)
+        self.assertTrue('form' in resp.context)
+        self.assertTrue('picture_url' in resp.context)
+
+    def test_change_memory_uses_correct_template(self):
+        self.client.login(username='username', password='PassWord12345.')
+        resp = self.client.get(reverse('change_memory', kwargs={'pk': 1}))
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'memories/change_memory.html')
 
 
 class DeleteMemoryViewTest(TestCase):
