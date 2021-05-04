@@ -38,3 +38,9 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+    - name: Upload coverage data to coveralls.io
+      run: |
+        pip install coveralls
+        coveralls
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
